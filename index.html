@@ -132,10 +132,21 @@
      opacity: 0;
 transition: opacity 1.5s ease;
   }
+    #bigHeart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 150px;
+  opacity: 0;
+  z-index: 10;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+}
 </style>
 
 
   <br>
+  <div id="bigHeart">❤️</div>
   <img id="photo" src="us.jpeg" alt="Us">
 
   <script>
@@ -168,26 +179,26 @@ transition: opacity 1.5s ease;
   let heartInterval;
 
   function showLove() {
-    // Change title
-    document.querySelector("h1").innerText =
-      "Sabia 😌❤️";
+  document.querySelector("h1").innerText =
+    "Sabia 😌❤️ (I knew it already)";
 
-    // Start hearts
-    heartInterval = setInterval(createHeart, 300);
+  const bigHeart = document.getElementById("bigHeart");
+  const photo = document.getElementById("photo");
 
-    // After 2 seconds: stop hearts + show image
+  // Show and zoom the big heart
+  bigHeart.style.opacity = 1;
+  bigHeart.style.transform = "translate(-50%, -50%) scale(3)";
+
+  // After heart animation, hide heart and show photo
+  setTimeout(() => {
+    bigHeart.style.opacity = 0;
+
+    photo.style.display = "block";
     setTimeout(() => {
-      clearInterval(heartInterval);
-
-      const photo = document.getElementById("photo");
-      photo.style.display = "block";
-
-      // fade in
-      setTimeout(() => {
-        photo.style.opacity = 1;
-      }, 100);
-    }, 2000);
-  }
+      photo.style.opacity = 1;
+    }, 100);
+  }, 1200);
+}
 </script>
 
 
