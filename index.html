@@ -32,13 +32,67 @@
   </style>
 </head>
 <body>
+  <div class="hearts"></div>
 
   <h1>Quer namorar comigo? ❤️</h1>
 
-  <button id="sim" onclick="showLove()">Sim</button>
-<button id="yesRed" onclick="showLove()">Sim but in red</button>
+  <button id="sim" onclick="showLove()">Yes</button>
+<button id="yesRed" onclick="showLove()">Yes but in red</button>
 
   <style>
+    .hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d6d;
+  transform: rotate(45deg);
+  animation: float 8s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff4d6d;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/*copiei daqui pra cima*/
+    
   body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -82,6 +136,25 @@
   <img id="photo" src="us.jpeg" alt="Us">
 
   <script>
+const heartsContainer = document.querySelector(".hearts");
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+  heart.style.opacity = Math.random();
+
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}, 400);
+
+    
+    /*copiei daqui pra cima*/
   const redBtn = document.getElementById("yesRed");
 
   redBtn.addEventListener("mouseover", () => {
