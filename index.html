@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #ffe6e6;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+    #no {
+      position: absolute;
+    }
+    img {
+      margin-top: 30px;
+      max-width: 300px;
+      display: none;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will you be my Valentine? ❤️</h1>
+
+  <button id="yes" onclick="showLove()">Yes</button>
+  <button id="no">No</button>
+
+  <br>
+  <img id="photo" src="us.jpg" alt="Us">
+
+  <script>
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    function showLove() {
+      document.getElementById("photo").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
