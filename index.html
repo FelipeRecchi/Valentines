@@ -32,7 +32,7 @@
   </style>
 </head>
 <body>
-  <div id="introPage" style="display:none;">
+  <div id="introPage" style="display:block;">
   <h1>
     I hope whatever the animal was that ate the mini eggs didnt eat this xD
   </h1>
@@ -170,10 +170,14 @@ transition: opacity 1.5s ease;
 
 
   <br>
-  <div id="bigHeart">❤️</div>
-  <img id="photo" src="us.jpeg" alt="Us">
 
   <script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("introPage").style.display = "block";
+  document.getElementById("proposalPage").style.display = "none";
+});
+
+    
     function goToProposal() {
   document.getElementById("introPage").style.display = "none";
   document.getElementById("proposalPage").style.display = "block";
